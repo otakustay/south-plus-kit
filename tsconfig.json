@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "target": "ES2022",
+    "allowJs": false,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "esModuleInterop": true,
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "declaration": false,
+    "exactOptionalPropertyTypes": true
+  },
+  "include": ["src", "build"]
+}

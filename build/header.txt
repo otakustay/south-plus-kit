@@ -1,0 +1,14 @@
+// ==UserScript==
+// @name         Soul Plus增强套件
+// @license      MIT
+// @namespace    http://otakustay.me
+// @version      1.0.0
+// @description  Soul-Plus Kit
+// @author       otakustay
+// @match        https://www.south-plus.net/read.php?*
+// @match        https://gofile.io/d/*
+// @match        https://workupload.com/archive/*
+// @match        https://workupload.com/file/*
+// @grant        GM.setClipboard
+// @grant        GM.openInTab
+// ==/UserScript==

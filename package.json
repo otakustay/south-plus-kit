@@ -1,0 +1,33 @@
+{
+  "name": "pan-helper",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "engines": {
+    "node": ">= 20.0.0"
+  },
+  "scripts": {
+    "postinstall": "husky install",
+    "lint": "eslint src --max-warnings=0",
+    "build": "vite build --config build/vite.config.ts && node build/post-build.mjs"
+  },
+  "keywords": ["user script", "tampermonkey", "south-plus"],
+  "author": "otakustay <otakustay@gmail.com>",
+  "license": "MIT",
+  "packageManager": "yarn@4.0.2+sha256.825003a0f561ad09a3b1ac4a3b3ea6207af2796d54f62a9420520915721f5186",
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/eslint-plugin": "^7.23.5",
+    "@ecomfe/eslint-config": "^8.0.0",
+    "@types/node": "^20.10.6",
+    "@types/tampermonkey": "^4.20.1",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "dprint": "^0.45.0",
+    "eslint": "^8.56.0",
+    "husky": "^8.0.3",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
+  }
+}
