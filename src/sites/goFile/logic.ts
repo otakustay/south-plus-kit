@@ -1,4 +1,5 @@
 import {SelectContext, dispatchClick, selectElementContext} from '../../utils/dom.js';
+import {isSimilar} from '../../utils/string.js';
 
 interface SelectArgs {
     name: string;
@@ -7,7 +8,7 @@ interface SelectArgs {
 const selectors = {
     row: ({name}: SelectArgs) => {
         const elements = document.querySelectorAll<HTMLSpanElement>('.contentName');
-        const element = [...elements].find(v => v.innerText.includes(name));
+        const element = [...elements].find(v => isSimilar(v.innerText, name, 0.8));
         return element ? element.closest('.row') : null;
     },
 } as const;
@@ -32,8 +33,8 @@ export class GoFileLogic {
 
     download() {
         const button = this.context.row?.querySelector('button');
-        if (button?.parentElement) {
-            dispatchClick(button.parentElement);
+        if (button) {
+            dispatchClick(button);
         }
     }
 }
