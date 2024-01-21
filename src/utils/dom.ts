@@ -20,9 +20,14 @@ export function waitForElementVisible(selector: string, options: WaitOptions): P
     return Promise.race([new Promise(detect), new Promise(abort)]);
 }
 
-export function dispatchClick(element: Element) {
-    const event = new MouseEvent('click');
-    element.dispatchEvent(event);
+export function dispatchClick(element: Element | HTMLElement) {
+    if ('click' in element) {
+        element.click();
+    }
+    else {
+        const event = new MouseEvent('click');
+        element.dispatchEvent(event);
+    }
 }
 
 export type SelectElement<A> = (args: A) => Element | null;
