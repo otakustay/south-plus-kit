@@ -1,5 +1,5 @@
 import {SelectContext, dispatchClick, selectElementContext} from '../../utils/dom.js';
-import {isSimilar} from '../../utils/string.js';
+import {mostSimilar} from '../../utils/string.js';
 
 interface SelectArgs {
     name: string;
@@ -7,8 +7,9 @@ interface SelectArgs {
 
 const selectors = {
     row: ({name}: SelectArgs) => {
-        const elements = document.querySelectorAll<HTMLSpanElement>('.contentName');
-        const element = [...elements].find(v => isSimilar(v.innerText, name, 0.8));
+        const elements = [...document.querySelectorAll<HTMLSpanElement>('.contentName')];
+        const targetText = mostSimilar(elements.map(v => v.innerText), name);
+        const element = elements.find(v => v.innerText === targetText);
         return element ? element.closest('.row') : null;
     },
 } as const;
