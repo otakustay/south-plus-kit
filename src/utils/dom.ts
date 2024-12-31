@@ -44,14 +44,16 @@ export function selectElementContext<S extends ElementSelector<A>, A>(selectors:
             if (selector.endsWith('!') && !element) {
                 throw new Error(`Unable to find required element "${selector}"`);
             }
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             context[key as keyof S] = element;
         }
         else {
             const element = selector(args);
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             context[key as keyof S] = element;
         }
     }
-    return context;
+    return context as SelectContext<S, A>;
 }
 
 export function injectStyle(strings: TemplateStringsArray, ...values: any[]) {
@@ -59,6 +61,7 @@ export function injectStyle(strings: TemplateStringsArray, ...values: any[]) {
     for (let i = 0; i < strings.length; i++) {
         parts.push(strings[i]);
         if (i < values.length) {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             parts.push(values[i]);
         }
     }

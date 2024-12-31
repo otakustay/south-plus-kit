@@ -13,5 +13,5 @@
     "declaration": false,
     "exactOptionalPropertyTypes": true
   },
-  "include": ["src", "build"]
+  "include": ["src", "build", "*.js"]
 }

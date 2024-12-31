@@ -1,15 +1,34 @@
 {
-  "name": "pan-helper",
-  "version": "1.0.2",
+  "name": "south-plus-kit",
+  "version": "1.0.3",
   "type": "module",
   "description": "",
   "engines": {
     "node": ">= 20.0.0"
   },
   "scripts": {
-    "postinstall": "husky install",
-    "lint": "eslint src --max-warnings=0",
-    "build": "vite build --config build/vite.config.ts && node build/post-build.mjs"
+    "clean": "wireit",
+    "build": "wireit",
+    "lint": "wireit",
+    "ci": "npm ci && npm run clean && npm run build && npm run lint",
+    "prepare": "husky"
+  },
+  "wireit": {
+    "clean": {
+      "command": "rm -rf esm cjs"
+    },
+    "build": {
+      "command": "vite build --config build/vite.config.ts && node build/post-build.mjs"
+    },
+    "lint": {
+      "command": "tsc && eslint --max-warnings=0 --fix src",
+      "files": [
+        "tsconfig.json",
+        "eslint.config.js",
+        "src/**"
+      ],
+      "output": []
+    }
   },
   "keywords": [
     "user script",
@@ -18,20 +37,19 @@
   ],
   "author": "otakustay <otakustay@gmail.com>",
   "license": "MIT",
-  "packageManager": "yarn@4.0.2+sha256.825003a0f561ad09a3b1ac4a3b3ea6207af2796d54f62a9420520915721f5186",
+  "packageManager": "yarn@4.1.0+sha256.81a00df816059803e6b5148acf03ce313cad36b7f6e5af6efa040a15981a6ffb",
   "devDependencies": {
-    "@babel/core": "^7.23.7",
-    "@babel/eslint-parser": "^7.23.3",
-    "@babel/eslint-plugin": "^7.23.5",
-    "@ecomfe/eslint-config": "^8.0.0",
-    "@types/node": "^20.10.6",
-    "@types/tampermonkey": "^4.20.1",
-    "@typescript-eslint/eslint-plugin": "^6.18.1",
-    "@typescript-eslint/parser": "^6.18.1",
-    "dprint": "^0.45.0",
-    "eslint": "^8.56.0",
-    "husky": "^8.0.3",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.11"
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/js": "^9.16.0",
+    "@types/node": "^22.10.2",
+    "@types/tampermonkey": "^5.0.4",
+    "dprint": "^0.48.0",
+    "eslint": "^9.17.0",
+    "husky": "^9.1.7",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.17.0",
+    "vite": "^6.0.6",
+    "wireit": "^0.14.9"
   }
 }

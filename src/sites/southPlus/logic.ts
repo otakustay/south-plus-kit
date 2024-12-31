@@ -20,7 +20,7 @@ export class SouthPlusLogic {
     }
 
     canDownload() {
-        return !!(this.context.goLink || this.context.workUploadLink || this.context.megaLink);
+        return !!(this.context.goLink ?? this.context.workUploadLink ?? this.context.megaLink);
     }
 
     canPurchase() {

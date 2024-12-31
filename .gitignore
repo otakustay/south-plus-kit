@@ -1,20 +1,25 @@
 # Dependency
 node_modules
-.yarn
 
 # System
 .DS_Store
 
 # Log
-/*.log
+*.log
 
 # IDE
 /.idea
 
 # Build
 *.tgz
-dist
+/dist
+
+# Test
+/coverage
 
 # Env
 .env
 .env.*.local
+
+# Wireit
+.wireit

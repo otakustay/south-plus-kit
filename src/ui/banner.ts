@@ -4,6 +4,7 @@ export class Banner {
     private readonly dom;
 
     static {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         injectStyle`
             .spk-banner {
                 position: fixed;

@@ -2,7 +2,7 @@
 // @name         Soul Plus增强套件
 // @license      MIT
 // @namespace    http://otakustay.me
-// @version      1.0.2
+// @version      1.0.3
 // @description  Soul-Plus Kit
 // @author       otakustay
 // @match        https://www.south-plus.net/read.php?*

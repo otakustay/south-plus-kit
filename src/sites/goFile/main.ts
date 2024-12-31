@@ -5,6 +5,7 @@ import {GoFileLogic} from './logic.js';
 export async function setupGoFile() {
     const searchParams = new URLSearchParams(location.search);
     const name = searchParams.get('__spk_download__');
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     injectStyle`
         .spk-row-active {
             background-color: hsl(358, 96%, 25%);
@@ -15,7 +16,7 @@ export async function setupGoFile() {
         return;
     }
 
-    await waitForElementVisible('.contentName', {timeout: 10 * 1000, interval: 100});
+    await waitForElementVisible('.item_open', {timeout: 10 * 1000, interval: 100});
 
     const logic = GoFileLogic.initialize(name);
 

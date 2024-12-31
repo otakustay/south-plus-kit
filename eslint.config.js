@@ -1,31 +1,47 @@
-import babel from '@babel/eslint-plugin';
-import ts from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import config from '@ecomfe/eslint-config/strict.js';
-import tsConfig from '@ecomfe/eslint-config/typescript/strict.js';
+import js from '@eslint/js';
+import ts from 'typescript-eslint';
 
-export default [
+export default ts.config(
+    js.configs.recommended,
+    ...ts.configs.strictTypeChecked,
+    ...ts.configs.stylisticTypeChecked,
     {
-        files: ['**/*.ts'],
         languageOptions: {
-            parser: tsParser,
             parserOptions: {
-                project: 'tsconfig.json',
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
             },
         },
-        plugins: {
-            '@babel': babel,
-            '@typescript-eslint': ts,
-        },
+    },
+    {
         rules: {
-            ...config.rules,
-            ...tsConfig.overrides.at(0).rules,
-            'no-unused-expressions': [
+            '@typescript-eslint/no-unsafe-assignment': 'off',
+            '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/no-empty-function': 'off',
+            '@typescript-eslint/array-type': [
                 'error',
                 {
-                    allowTaggedTemplates: true,
+                    default: 'array-simple',
+                    readonly: 'array-simple',
                 },
             ],
+            '@typescript-eslint/restrict-template-expressions': 'off',
+            '@typescript-eslint/no-confusing-void-expression': [
+                'error',
+                {
+                    ignoreArrowShorthand: true,
+                    ignoreVoidOperator: true,
+                },
+            ],
+            '@typescript-eslint/require-await': 'off',
+            '@typescript-eslint/no-unsafe-call': 'off',
+            '@typescript-eslint/prefer-nullish-coalescing': [
+                'error',
+                {
+                    ignorePrimitives: true,
+                },
+            ],
+            '@typescript-eslint/no-non-null-assertion': 'off',
         },
-    },
-];
+    }
+);

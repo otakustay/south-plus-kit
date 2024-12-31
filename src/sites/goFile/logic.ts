@@ -7,10 +7,10 @@ interface SelectArgs {
 
 const selectors = {
     row: ({name}: SelectArgs) => {
-        const elements = [...document.querySelectorAll<HTMLSpanElement>('.contentName')];
+        const elements = [...document.querySelectorAll<HTMLSpanElement>('.item_open')];
         const targetText = mostSimilar(elements.map(v => v.innerText), name);
         const element = elements.find(v => v.innerText === targetText);
-        return element ? element.closest('.row') : null;
+        return element ? element.closest('[data-item-id]') : null;
     },
 } as const;
 
@@ -33,7 +33,7 @@ export class GoFileLogic {
     }
 
     download() {
-        const button = this.context.row?.querySelector('button');
+        const button = this.context.row?.querySelector('button.item_download');
         if (button) {
             dispatchClick(button);
         }

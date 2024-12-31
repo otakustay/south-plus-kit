@@ -5,6 +5,7 @@ import {WorkUploadArchiveLogic, WorkUploadFileLogic} from './logic.js';
 async function setupArchivePage() {
     const searchParams = new URLSearchParams(location.search);
     const name = searchParams.get('__spk_download__');
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     injectStyle`
         .spk-row-active {
             background-color: #f6c050;
